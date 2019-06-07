@@ -68,6 +68,20 @@ const Component = ({ intl }) => <div>{intl.formatMessage({ id: "welcome", defaul
 export default injectIntl(Component)
 ```
 
+or 
+
+```js
+import React from "react"
+import { useIntl } from "react-intl"
+
+const Component = () => {
+  const intl = useIntl()
+  return (<div>{intl.formatMessage({ id: "welcome", defaultMessage: "Hello World" })
+}
+
+export default Component
+```
+
 > What babel plugin creates in runtime
 
 en.json
