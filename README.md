@@ -63,7 +63,14 @@ or
 import React from "react"
 import { injectIntl } from "react-intl"
 
-const Component = ({ intl }) => <div>{intl.formatMessage({ id: "welcome", defaultMessage: "Hello World" })}
+const Component = ({ intl }) => (
+	<div>
+		{intl.formatMessage({
+			id: "welcome",
+			defaultMessage: "Hello World"
+		})}
+	</div>
+)
 
 export default injectIntl(Component)
 ```
@@ -75,8 +82,15 @@ import React from "react"
 import { useIntl } from "react-intl"
 
 const Component = () => {
-  const intl = useIntl()
-  return (<div>{intl.formatMessage({ id: "welcome", defaultMessage: "Hello World" })
+	const intl = useIntl()
+	return (
+		<div>
+			{intl.formatMessage({
+				id: "welcome",
+				defaultMessage: "Hello World"
+			})}
+		</div>
+	)
 }
 
 export default Component
