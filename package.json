@@ -11,8 +11,7 @@
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
     "test:update": "kcd-scripts test --updateSnapshot",
-    "validate": "kcd-scripts validate",
-    "precommit": "kcd-scripts precommit"
+    "validate": "kcd-scripts validate"
   },
   "repository": {
     "type": "git",
