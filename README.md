@@ -59,7 +59,7 @@ or
 
 > Your React implementation
 
-```
+```js
 import React from "react"
 import { injectIntl } from "react-intl"
 
@@ -71,14 +71,14 @@ export default injectIntl(Component)
 > What babel plugin creates in runtime
 
 en.json
-```
+```json
 {
   "welcome": "Hello World"
 }
 ```
 
 de.json
-```
+```json
 {
   "welcome": ""
 }
