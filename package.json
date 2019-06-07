@@ -1,0 +1,53 @@
+{
+  "name": "babel-plugin-intl-advance",
+  "version": "0.0.1",
+  "description": "This plugin automates the process of creating locale files to provide them to react-intl.",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "kcd-scripts build",
+    "lint": "kcd-scripts lint",
+    "test": "kcd-scripts test",
+    "test:update": "kcd-scripts test --updateSnapshot",
+    "validate": "kcd-scripts validate",
+    "precommit": "kcd-scripts precommit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keremciu/babel-plugin-react-intl-advance.git"
+  },
+  "keywords": [
+    "react-intl",
+    "automate-translation",
+    "automate-locale",
+    "injectintl",
+    "useintl",
+    "intl",
+    "formatmessage"
+  ],
+  "author": "Kerem Sevencan <info@kerem.ws> (http://kerem.ws/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keremciu/babel-plugin-react-intl-advance/issues"
+  },
+  "homepage": "https://github.com/keremciu/babel-plugin-react-intl-advance#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.4.5",
+    "kcd-scripts": "^1.4.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/kcd-scripts/eslint.js"
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    "dist"
+  ],
+  "babel": {
+    "presets": [
+      "kcd-scripts/babel"
+    ]
+  }
+}
