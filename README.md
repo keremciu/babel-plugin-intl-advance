@@ -34,9 +34,9 @@ or
 ```json
 {
   "plugins": [ "intl-advance", {
-    defaultLocale: "en-GB",
-    locales: ["en-GB", "de-DE", "fr-FR"],
-    outFile: "locales/"
+    "defaultLocale": "en-GB",
+    "locales": ["en-GB", "de-DE", "fr-FR"],
+    "outFile": "locales/"
   } ]
 }
 ```
