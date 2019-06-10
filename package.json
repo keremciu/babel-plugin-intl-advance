@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "This plugin automates the process of creating locale files to provide them to react-intl.",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "kcd-scripts build",
     "lint": "kcd-scripts lint",
@@ -43,5 +46,9 @@
     "presets": [
       "kcd-scripts/babel"
     ]
+  },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=3"
   }
 }
