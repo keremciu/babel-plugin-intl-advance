@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "This plugin automates the process of creating locale files to provide them to react-intl.",
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "kcd-scripts build",
     "lint": "kcd-scripts lint",
@@ -19,12 +16,10 @@
   },
   "keywords": [
     "react-intl",
+    "intl-advance",
     "automate-translation",
-    "automate-locale",
     "injectintl",
-    "useintl",
-    "intl",
-    "formatmessage"
+    "useintl"
   ],
   "author": "Kerem Sevencan <info@kerem.ws> (http://kerem.ws/)",
   "license": "MIT",
