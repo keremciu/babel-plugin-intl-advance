@@ -1,3 +1,7 @@
+import p from 'path'
+import {writeFileSync} from 'fs'
+import {sync as mkdirpSync} from 'mkdirp'
+
 const EXTRACTED = Symbol('ReactIntlExtracted')
 const MESSAGES = Symbol('ReactIntlMessages')
 
@@ -41,6 +45,20 @@ export default ({types: t}) => {
     return false
   }
 
+  const storeTranslationKey = (id, path, state) => {
+    const {file, opts} = state
+    const messages = file.get(MESSAGES)
+    let loc
+    if (opts.extractSourceLocation) {
+      loc = {
+        file: p.relative(process.cwd(), file.opts.filename),
+        ...path.node.loc,
+      }
+    }
+
+    messages.set(id, {id, ...loc})
+  }
+
   return {
     name: 'intl-advance',
     pre(file) {
@@ -51,6 +69,51 @@ export default ({types: t}) => {
     post(file) {
       const {opts} = this
       const {filename} = file.opts
+
+      const basename = p.basename(filename, p.extname(filename))
+      const messages = file.get(MESSAGES)
+      const descriptors = [...messages.values()]
+      file.metadata['react-intl'] = {messages: descriptors}
+
+      if (opts.messagesDir && descriptors.length > 0) {
+        // Make sure the relative path is "absolute" before
+        // joining it with the `messagesDir`.
+        const relativePath = p.join(p.sep, p.relative(process.cwd(), filename))
+
+        const messagesFilename = p.join(
+          opts.messagesDir,
+          p.dirname(relativePath),
+          `${basename}.json`,
+        )
+
+        const messagesFile = JSON.stringify(descriptors, null, 2)
+
+        mkdirpSync(p.dirname(messagesFilename))
+        writeFileSync(messagesFilename, messagesFile)
+      }
+
+      // const basename = p.basename(filename, p.extname(filename))
+      // const messages = file.get(MESSAGES)
+      // const descriptors = [...messages.values()]
+      // file.metadata['react-intl-advanced'] = {messages: descriptors}
+
+      // if (opts.messagesDir && descriptors.length > 0) {
+      //   // Make sure the relative path is "absolute" before
+      //   // joining it with the `messagesDir`.
+      //   const relativePath = p.join(p.sep, p.relative(process.cwd(), filename))
+
+      //   const messagesFilename = p.join(
+      //     opts.messagesDir,
+      //     p.dirname(relativePath),
+      //     `${basename}.json`,
+      //   )
+
+      //   const messagesFile = JSON.stringify(descriptors, null, 2)
+
+      //   mkdirpSync(p.dirname(messagesFilename))
+      //   writeFileSync(messagesFilename, messagesFile)
+      // }
+      // delete or add to locale files
       // __source={ { fileName: 'this/file.js', lineNumber: 10 } }
     },
     visitor: {

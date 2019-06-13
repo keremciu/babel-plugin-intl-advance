@@ -32,7 +32,8 @@
   "homepage": "https://github.com/keremciu/babel-plugin-react-intl-advance#readme",
   "dependencies": {
     "@babel/runtime": "^7.4.5",
-    "kcd-scripts": "^1.4.0"
+    "kcd-scripts": "^1.4.0",
+    "mkdirp": "^0.5.1"
   },
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js"
