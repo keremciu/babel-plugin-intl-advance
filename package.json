@@ -37,6 +37,7 @@
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js"
   },
+  "prettier": "./node_modules/kcd-scripts/prettier.js",
   "eslintIgnore": [
     "node_modules",
     "coverage",
