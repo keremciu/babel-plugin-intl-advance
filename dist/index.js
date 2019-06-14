@@ -89,7 +89,7 @@ var _default = function _default(_ref) {
 
       var messages = file.get(MESSAGES);
       var descriptors = [].concat(messages.values());
-      file.metadata['react-intl'] = {
+      file.metadata['react-intl-advanced'] = {
         messages: descriptors
       };
 

@@ -1,0 +1,9 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "files.insertFinalNewline": false,
+    "prettier.eslintIntegration": true,
+    "eslint.autoFixOnSave": true,
+  }
+}

@@ -5,7 +5,7 @@ import importIntlAdvancePlugin from '../index'
 pluginTester({
   plugin: importIntlAdvancePlugin,
   pluginOptions: {
-    messagesDir: './src/messages',
+    messagesDir: './',
     locale: 'en-GB',
   },
   fixtures: path.join(__dirname, 'fixtures'),
