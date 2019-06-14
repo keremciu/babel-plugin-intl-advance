@@ -53,10 +53,10 @@ or
 
 ```
   intlPropName: intl,
-	formattedKeys: [
-		"formatMessage",
-		"formatHTMLMessage"
-	];
+  formattedKeys: [
+    "formatMessage",
+    "formatHTMLMessage"
+  ];
 ```
 
 ## Process
@@ -80,11 +80,11 @@ import React from "react"
 import { injectIntl } from "react-intl"
 
 const Component = ({ intl }) => (
-	<div>
-		{intl.formatMessage({
-			id: "welcome",
-		})}
-	</div>
+  <div>
+    {intl.formatMessage({
+      id: "welcome",
+    })}
+  </div>
 )
 
 export default injectIntl(Component)
@@ -97,14 +97,14 @@ import React from "react"
 import { useIntl } from "react-intl"
 
 const Component = () => {
-	const intl = useIntl()
-	return (
-		<div>
-			{intl.formatMessage({
-				id: "welcome",
-			})}
-		</div>
-	)
+  const intl = useIntl()
+  return (
+    <div>
+      {intl.formatMessage({
+        id: "welcome",
+      })}
+    </div>
+  )
 }
 
 export default Component
