@@ -125,7 +125,9 @@ export default ({types: t}) => {
           }
 
           const properties = translationObject.get('properties')
-          const idProperty = properties.find(p => p.get('key').name === 'id')
+          const idProperty = properties.find(
+            prop => prop.get('key').name === 'id',
+          )
           const idValue = evaluatePath(idProperty.get('value')).trim()
           storeTranslationKey(idValue, translationObject, state)
 
