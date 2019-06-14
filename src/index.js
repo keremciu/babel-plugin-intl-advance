@@ -35,7 +35,8 @@ export default ({types: t}) => {
       const object = path.get('object')
       const property = path.get('property')
       if (
-        t.isIdentifier(object, {name: propName}) &&
+        t.isIdentifier(object) &&
+        object.node.name === propName &&
         t.isIdentifier(property) &&
         formatMessageKeys.includes(property.node.name)
       ) {
@@ -91,30 +92,6 @@ export default ({types: t}) => {
         mkdirpSync(p.dirname(messagesFilename))
         writeFileSync(messagesFilename, messagesFile)
       }
-
-      // const basename = p.basename(filename, p.extname(filename))
-      // const messages = file.get(MESSAGES)
-      // const descriptors = [...messages.values()]
-      // file.metadata['react-intl-advanced'] = {messages: descriptors}
-
-      // if (opts.messagesDir && descriptors.length > 0) {
-      //   // Make sure the relative path is "absolute" before
-      //   // joining it with the `messagesDir`.
-      //   const relativePath = p.join(p.sep, p.relative(process.cwd(), filename))
-
-      //   const messagesFilename = p.join(
-      //     opts.messagesDir,
-      //     p.dirname(relativePath),
-      //     `${basename}.json`,
-      //   )
-
-      //   const messagesFile = JSON.stringify(descriptors, null, 2)
-
-      //   mkdirpSync(p.dirname(messagesFilename))
-      //   writeFileSync(messagesFilename, messagesFile)
-      // }
-      // delete or add to locale files
-      // __source={ { fileName: 'this/file.js', lineNumber: 10 } }
     },
     visitor: {
       CallExpression(path, state) {
@@ -125,15 +102,21 @@ export default ({types: t}) => {
           }
 
           const properties = translationObject.get('properties')
-          const idProperty = properties.find(
-            prop => prop.get('key').name === 'id',
-          )
+          const idProperty = properties.find(prop => {
+            const key = prop.get('key')
+            if (key.isIdentifier()) {
+              return key.node.name === 'id'
+            }
+            return false
+          })
+
           const idValue = evaluatePath(idProperty.get('value')).trim()
           storeTranslationKey(idValue, translationObject, state)
 
           // Tag the AST node so we don't try to extract it twice.
           tagAsExtracted(translationObject)
         }
+
         if (isFormatMessageCall(path.get('callee'), opts)) {
           const [firstArgument] = path.get('arguments')
           if (firstArgument.type === 'ObjectExpression') {
